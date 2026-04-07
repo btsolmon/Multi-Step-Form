@@ -24,7 +24,7 @@ export const ThirdStep = ({
   const isHavingError = () => {
     const dobError = isDobValid(form.dob);
     const profileimageError = isProfileImageValid(form.image);
-    return !!(dobError || profileimageError);
+    return dobError || profileimageError;
   };
 
   return (

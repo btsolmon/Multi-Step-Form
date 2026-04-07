@@ -24,7 +24,7 @@ export const SecondStep = ({
   const isPasswordValid = (value) => {
     if (value === "") return "Password cannot be empty.";
     if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#.])[A-Za-z\d@$!%*?&#.]{8,}$/.test(
         value,
       )
     )
@@ -41,11 +41,8 @@ export const SecondStep = ({
     const phoneNumberError = isPhoneNumberValid(form.phonenumber);
     const passwordError = isPasswordValid(form.password);
     const confirmPasswordError = isConfirmPasswordValid(form.confirmpassword);
-    return !!(
-      emailError ||
-      phoneNumberError ||
-      passwordError ||
-      confirmPasswordError
+    return (
+      emailError || phoneNumberError || passwordError || confirmPasswordError
     );
   };
 
@@ -90,6 +87,7 @@ export const SecondStep = ({
           />
           <TextField
             value={form.password}
+            type="password"
             onChange={(e) => {
               setForm({ ...form, password: e.target.value });
               setError({
@@ -104,6 +102,7 @@ export const SecondStep = ({
           />
           <TextField
             value={form.confirmpassword}
+            type="password"
             onChange={(e) => {
               setForm({ ...form, confirmpassword: e.target.value });
               setError({

@@ -30,7 +30,7 @@ export const FirstStep = ({
     const firstNameError = isFirstNameValid(form.firstname);
     const lastNameError = isLastNameValid(form.lastname);
     const usernameError = isUsernameValid(form.username);
-    return !!(firstNameError || lastNameError || usernameError);
+    return firstNameError || lastNameError || usernameError;
   };
 
   return (
